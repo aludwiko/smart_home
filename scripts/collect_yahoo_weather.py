@@ -17,7 +17,7 @@ measurement = "yahoo_weather_readings"
 city = "wroclaw"
 
 def format_float(number):
-    return float("%.2f" % round(number, 2))
+    return float("%.2f" % round(float(number), 2))
 
 try:
     result = urllib2.urlopen(yql_url).read()
@@ -29,7 +29,6 @@ try:
     pressure = atmosphere['pressure']
     temp_f = condition['temp']
     temp_c = (int(temp_f) - 32)/1.8
-    print temp_c, humidity, pressure
 
     # Create the InfluxDB object
     client = InfluxDBClient(host, port, user, password, dbname)
@@ -51,5 +50,5 @@ try:
     client.write_points(json_body)
     print json_body
 except:
-    print "Unexpected error:", sys.exc_info()[0]
+    print "Unexpected error:", sys.exc_info()
 
