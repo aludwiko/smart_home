@@ -1,4 +1,6 @@
-import urllib2, urllib, json
+import urllib2, urllib, json, sys
+import datetime
+from influxdb import InfluxDBClient
 
 baseurl = "https://query.yahooapis.com/v1/public/yql?"
 city_woeid="526363"
