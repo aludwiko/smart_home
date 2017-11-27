@@ -1,5 +1,6 @@
 import urllib2, urllib, json, sys
 import datetime
+import time
 from influxdb import InfluxDBClient
 
 baseurl = "https://query.yahooapis.com/v1/public/yql?"
@@ -55,4 +56,6 @@ while repeat:
         print json_body
     except:
         print "Unexpected error:", sys.exc_info()
+        #pause for 5 sec
+        time.sleep(5)
 
